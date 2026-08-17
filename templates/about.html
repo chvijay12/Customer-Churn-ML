@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About - ChurnAI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            📊
+            <span>ChurnAI</span>
+        </div>
+
+        <p class="subtitle">
+            Prediction System
+        </p>
+
+        <nav>
+
+            <a href="{{ url_for('home') }}" class="nav-item">
+                🏠 Dashboard
+            </a>
+
+            <a href="{{ url_for('customer') }}" class="nav-item">
+                👤 Customer
+            </a>
+
+            <a href="{{ url_for('analytics') }}" class="nav-item">
+                📈 Analytics
+            </a>
+
+            <a href="{{ url_for('history') }}" class="nav-item">
+                📋 History
+            </a>
+
+            <a href="{{ url_for('settings') }}" class="nav-item">
+                ⚙️ Settings
+            </a>
+
+            <a href="{{ url_for('about') }}" class="nav-item active">
+                ℹ️ About
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <div class="page-header">
+
+            <h1>ℹ️ About ChurnAI</h1>
+
+            <p>
+                Customer Churn Prediction System
+            </p>
+
+        </div>
+
+
+        <!-- PROJECT INTRODUCTION -->
+
+        <section class="about-card">
+
+            <div class="about-icon">
+                🤖
+            </div>
+
+            <h2>
+                ChurnAI
+            </h2>
+
+            <p>
+                ChurnAI is a machine learning based customer
+                churn prediction system.
+            </p>
+
+            <p>
+                The system analyzes customer information and
+                predicts whether a customer is likely to leave
+                the service.
+            </p>
+
+            <p>
+                It also provides a churn probability so that
+                businesses can identify customers who may need
+                additional attention.
+            </p>
+
+        </section>
+
+
+        <!-- TECHNOLOGIES -->
+
+        <section class="about-card">
+
+            <h2>
+                🛠️ Technologies Used
+            </h2>
+
+            <div class="technology-grid">
+
+                <div class="technology">
+                    <strong>Python</strong>
+                    <span>Programming</span>
+                </div>
+
+                <div class="technology">
+                    <strong>Flask</strong>
+                    <span>Web Backend</span>
+                </div>
+
+                <div class="technology">
+                    <strong>Scikit-learn</strong>
+                    <span>Machine Learning</span>
+                </div>
+
+                <div class="technology">
+                    <strong>Pandas</strong>
+                    <span>Data Processing</span>
+                </div>
+
+                <div class="technology">
+                    <strong>HTML</strong>
+                    <span>Frontend</span>
+                </div>
+
+                <div class="technology">
+                    <strong>CSS</strong>
+                    <span>Web Design</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODEL INFORMATION -->
+
+        <section class="about-card">
+
+            <h2>
+                🧠 Machine Learning Model
+            </h2>
+
+            <div class="model-details">
+
+                <div>
+                    <span>Algorithm</span>
+                    <strong>
+                        Logistic Regression
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Accuracy</span>
+                    <strong>
+                        80.70%
+                    </strong>
+                </div>
+
+                <div>
+                    <span>ROC-AUC</span>
+                    <strong>
+                        84.18%
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Dataset</span>
+                    <strong>
+                        7,043 Customers
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+
+        <section class="about-card">
+
+            <h2>
+                🔄 How ChurnAI Works
+            </h2>
+
+            <div class="workflow">
+
+                <div class="workflow-step">
+
+                    <span>1</span>
+
+                    <p>
+                        Customer information is entered
+                        through the website.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <span>2</span>
+
+                    <p>
+                        The information is converted into
+                        machine-learning features.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <span>3</span>
+
+                    <p>
+                        The saved scaler prepares the data
+                        for the model.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <span>4</span>
+
+                    <p>
+                        Logistic Regression predicts
+                        customer churn.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <span>5</span>
+
+                    <p>
+                        The website displays the prediction
+                        and churn probability.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECT FEATURES -->
+
+        <section class="about-card">
+
+            <h2>
+                ✨ Project Features
+            </h2>
+
+            <ul class="feature-list">
+
+                <li>
+                    🔮 Customer churn prediction
+                </li>
+
+                <li>
+                    📊 Customer analytics
+                </li>
+
+                <li>
+                    📋 Prediction history
+                </li>
+
+                <li>
+                    📈 Churn probability
+                </li>
+
+                <li>
+                    🤖 Machine learning model
+                </li>
+
+                <li>
+                    🌐 Flask web application
+                </li>
+
+                <li>
+                    📱 Responsive web interface
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="about-footer">
+
+            <h3>
+                ChurnAI
+            </h3>
+
+            <p>
+                Customer Churn Prediction System
+            </p>
+
+            <p>
+                Machine Learning + Flask + Web Development
+            </p>
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>

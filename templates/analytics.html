@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics - ChurnAI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- SIDEBAR / NAVIGATION -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            📊
+            <span>ChurnAI</span>
+        </div>
+
+        <p class="subtitle">Prediction System</p>
+
+        <nav>
+
+            <a href="{{ url_for('home') }}" class="nav-item">
+                🏠 Dashboard
+            </a>
+
+            <a href="{{ url_for('customer') }}" class="nav-item">
+                👤 Customer
+            </a>
+
+            <a href="{{ url_for('analytics') }}" class="nav-item active">
+                📈 Analytics
+            </a>
+
+            <a href="{{ url_for('history') }}" class="nav-item">
+                📋 History
+            </a>
+
+            <a href="{{ url_for('settings') }}" class="nav-item">
+                ⚙️ Settings
+            </a>
+
+            <a href="{{ url_for('about') }}" class="nav-item">
+                ℹ️ About
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <div class="page-header">
+
+            <h1>📊 Customer Analytics</h1>
+
+            <p>
+                Explore customer churn patterns and business insights.
+            </p>
+
+        </div>
+
+
+        <!-- SUMMARY CARDS -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <div>
+                    <p>Total Customers</p>
+                    <h2>7,043</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔴
+                </div>
+
+                <div>
+                    <p>Churned Customers</p>
+                    <h2>1,869</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🟢
+                </div>
+
+                <div>
+                    <p>Retained Customers</p>
+                    <h2>5,174</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📈
+                </div>
+
+                <div>
+                    <p>Churn Rate</p>
+                    <h2>26.54%</h2>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHURN DISTRIBUTION -->
+
+        <section class="analytics-section">
+
+            <h2>Customer Churn Distribution</h2>
+
+            <p>
+                Out of 7,043 customers, 1,869 customers have churned.
+            </p>
+
+
+            <div class="chart-box">
+
+                <div class="bar-container">
+
+                    <div class="bar-label">
+                        <span>Customers Retained</span>
+                        <strong>5,174</strong>
+                    </div>
+
+                    <div class="bar">
+
+                        <div class="bar-fill retained"
+                             style="width: 73.46%;">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="bar-container">
+
+                    <div class="bar-label">
+                        <span>Customers Churned</span>
+                        <strong>1,869</strong>
+                    </div>
+
+                    <div class="bar">
+
+                        <div class="bar-fill churned"
+                             style="width: 26.54%;">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTERNET SERVICE -->
+
+        <section class="analytics-section">
+
+            <h2>🌐 Internet Service Insights</h2>
+
+            <div class="insight-grid">
+
+                <div class="insight-card">
+
+                    <h3>DSL</h3>
+
+                    <p>
+                        Customers using DSL have a comparatively
+                        lower churn level than Fiber Optic users.
+                    </p>
+
+                </div>
+
+
+                <div class="insight-card">
+
+                    <h3>Fiber Optic</h3>
+
+                    <p>
+                        Fiber Optic customers show a higher number
+                        of churned customers in the dataset.
+                    </p>
+
+                </div>
+
+
+                <div class="insight-card">
+
+                    <h3>No Internet</h3>
+
+                    <p>
+                        Customers without internet service have
+                        relatively low churn.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODEL INFORMATION -->
+
+        <section class="analytics-section">
+
+            <h2>🤖 Machine Learning Model</h2>
+
+            <div class="model-card">
+
+                <div>
+                    <span>Model</span>
+                    <strong>Logistic Regression</strong>
+                </div>
+
+                <div>
+                    <span>Accuracy</span>
+                    <strong>80.70%</strong>
+                </div>
+
+                <div>
+                    <span>ROC-AUC</span>
+                    <strong>84.18%</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction History - ChurnAI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            📊
+            <span>ChurnAI</span>
+        </div>
+
+        <p class="subtitle">
+            Prediction System
+        </p>
+
+
+        <nav>
+
+            <a href="{{ url_for('home') }}"
+               class="nav-item">
+                🏠 Dashboard
+            </a>
+
+            <a href="{{ url_for('customer') }}"
+               class="nav-item">
+                👤 Customer
+            </a>
+
+            <a href="{{ url_for('analytics') }}"
+               class="nav-item">
+                📈 Analytics
+            </a>
+
+            <a href="{{ url_for('history') }}"
+               class="nav-item active">
+                📋 History
+            </a>
+
+            <a href="{{ url_for('settings') }}"
+               class="nav-item">
+                ⚙️ Settings
+            </a>
+
+            <a href="{{ url_for('about') }}"
+               class="nav-item">
+                ℹ️ About
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <div class="page-header">
+
+            <h1>📋 Prediction History</h1>
+
+            <p>
+                View previous customer churn predictions.
+            </p>
+
+        </div>
+
+
+        <!-- HISTORY CARD -->
+
+        <section class="history-card">
+
+            <div class="history-header">
+
+                <h2>Recent Predictions</h2>
+
+                <button class="clear-button"
+                        onclick="clearHistory()">
+                    🗑️ Clear History
+                </button>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th>Tenure</th>
+
+                            <th>Monthly Charges</th>
+
+                            <th>Total Charges</th>
+
+                            <th>Contract</th>
+
+                            <th>Internet Service</th>
+
+                            <th>Prediction</th>
+
+                            <th>Probability</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="historyTable">
+
+                        <tr>
+
+                            <td colspan="8"
+                                class="empty-history">
+
+                                No prediction history available yet.
+
+                                <br><br>
+
+                                Make your first prediction from the
+                                Customer page.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- GO TO CUSTOMER -->
+
+        <div class="history-action">
+
+            <a href="{{ url_for('customer') }}"
+               class="primary-button">
+
+                🔮 Make New Prediction
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        function clearHistory() {
+
+            const confirmed =
+                confirm(
+                    "Are you sure you want to clear prediction history?"
+                );
+
+            if (confirmed) {
+
+                localStorage.removeItem(
+                    "churnPredictionHistory"
+                );
+
+                location.reload();
+
+            }
+
+        }
+
+
+        function loadHistory() {
+
+            const history =
+                JSON.parse(
+                    localStorage.getItem(
+                        "churnPredictionHistory"
+                    )
+                ) || [];
+
+
+            const table =
+                document.getElementById(
+                    "historyTable"
+                );
+
+
+            if (history.length === 0) {
+
+                return;
+
+            }
+
+
+            table.innerHTML = "";
+
+
+            history.forEach(
+                function(item, index) {
+
+                    const row =
+                        document.createElement("tr");
+
+
+                    row.innerHTML = `
+
+                        <td>${index + 1}</td>
+
+                        <td>${item.tenure}</td>
+
+                        <td>₹${item.monthly_charges}</td>
+
+                        <td>₹${item.total_charges}</td>
+
+                        <td>${item.contract}</td>
+
+                        <td>${item.internet_service}</td>
+
+                        <td>${item.prediction}</td>
+
+                        <td>${item.probability}%</td>
+
+                    `;
+
+
+                    table.appendChild(row);
+
+                }
+            );
+
+        }
+
+
+        loadHistory();
+
+    </script>
+
+
+</body>
+
+</html>

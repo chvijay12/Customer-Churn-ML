@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Settings - ChurnAI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            📊
+            <span>ChurnAI</span>
+        </div>
+
+        <p class="subtitle">
+            Prediction System
+        </p>
+
+
+        <nav>
+
+            <a href="{{ url_for('home') }}"
+               class="nav-item">
+                🏠 Dashboard
+            </a>
+
+            <a href="{{ url_for('customer') }}"
+               class="nav-item">
+                👤 Customer
+            </a>
+
+            <a href="{{ url_for('analytics') }}"
+               class="nav-item">
+                📈 Analytics
+            </a>
+
+            <a href="{{ url_for('history') }}"
+               class="nav-item">
+                📋 History
+            </a>
+
+            <a href="{{ url_for('settings') }}"
+               class="nav-item active">
+                ⚙️ Settings
+            </a>
+
+            <a href="{{ url_for('about') }}"
+               class="nav-item">
+                ℹ️ About
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <div class="page-header">
+
+            <h1>⚙️ Settings</h1>
+
+            <p>
+                Application and machine learning configuration.
+            </p>
+
+        </div>
+
+
+        <!-- MODEL SETTINGS -->
+
+        <section class="settings-card">
+
+            <h2>🤖 Model Information</h2>
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Machine Learning Model
+                    </strong>
+
+                    <p>
+                        Classification model used for
+                        customer churn prediction.
+                    </p>
+
+                </div>
+
+                <span class="status-badge">
+                    Logistic Regression
+                </span>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Model Accuracy
+                    </strong>
+
+                    <p>
+                        Accuracy achieved on the test dataset.
+                    </p>
+
+                </div>
+
+                <span class="status-badge">
+                    80.70%
+                </span>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        ROC-AUC
+                    </strong>
+
+                    <p>
+                        Ability of the model to distinguish
+                        churn and non-churn customers.
+                    </p>
+
+                </div>
+
+                <span class="status-badge">
+                    84.18%
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- DATASET -->
+
+        <section class="settings-card">
+
+            <h2>📊 Dataset Information</h2>
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Dataset
+                    </strong>
+
+                    <p>
+                        Telco Customer Churn dataset
+                    </p>
+
+                </div>
+
+                <span>
+                    7,043 Customers
+                </span>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Features
+                    </strong>
+
+                    <p>
+                        Features used by the trained model.
+                    </p>
+
+                </div>
+
+                <span>
+                    30
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- APPEARANCE -->
+
+        <section class="settings-card">
+
+            <h2>🎨 Preferences</h2>
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Theme
+                    </strong>
+
+                    <p>
+                        Choose the appearance of the dashboard.
+                    </p>
+
+                </div>
+
+                <select id="themeSelect"
+                        onchange="changeTheme()">
+
+                    <option value="light">
+                        Light
+                    </option>
+
+                    <option value="dark">
+                        Dark
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESET -->
+
+        <section class="settings-card">
+
+            <h2>🔄 Reset</h2>
+
+            <p>
+                Reset website preferences stored in this browser.
+            </p>
+
+            <button class="danger-button"
+                    onclick="resetSettings()">
+
+                Reset Settings
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function changeTheme() {
+
+            const theme =
+                document.getElementById(
+                    "themeSelect"
+                ).value;
+
+
+            localStorage.setItem(
+                "churnTheme",
+                theme
+            );
+
+
+            if (theme === "dark") {
+
+                document.body.classList.add(
+                    "dark-mode"
+                );
+
+            } else {
+
+                document.body.classList.remove(
+                    "dark-mode"
+                );
+
+            }
+
+        }
+
+
+        function resetSettings() {
+
+            localStorage.removeItem(
+                "churnTheme"
+            );
+
+            alert(
+                "Settings have been reset."
+            );
+
+            location.reload();
+
+        }
+
+
+        const savedTheme =
+            localStorage.getItem(
+                "churnTheme"
+            );
+
+
+        if (savedTheme) {
+
+            document.getElementById(
+                "themeSelect"
+            ).value = savedTheme;
+
+            changeTheme();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
